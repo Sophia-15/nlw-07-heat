@@ -2,7 +2,9 @@ import React, { FormEvent, useContext, useState } from 'react';
 import { VscGithubInverted, VscSignOut } from 'react-icons/vsc';
 import { AuthContext } from '../../contexts/AuthContext';
 import { api } from '../../services/api';
-import styles from './styles.module.scss';
+import {
+  Container, SignOutButton, SendMessageFormHeader, SendMessageFormDoWhile,
+} from './styles';
 
 export function SendMessageForm() {
   const { user, signOut } = useContext(AuthContext);
@@ -22,25 +24,25 @@ export function SendMessageForm() {
   }
 
   return (
-    <div className={styles.sendMessageFormWrapper}>
-      <button type="button" className={styles.signOutButton} onClick={signOut}>
-        <VscSignOut size={32} />
-      </button>
+    <Container>
+      <SignOutButton type="button" onClick={signOut}>
+        <VscSignOut />
+      </SignOutButton>
 
-      <header className={styles.userInformation}>
-        <div className={styles.userImage}>
+      <SendMessageFormHeader>
+        <div className="userImage">
           <img src={user?.avatar_url} alt={user?.name} />
         </div>
 
-        <strong className={styles.userName}>{user?.name}</strong>
+        <strong className="userName">{user?.name}</strong>
 
-        <span className={styles.userGithub}>
+        <span className="userGithub">
           <VscGithubInverted size={16} />
           {user?.login}
         </span>
-      </header>
+      </SendMessageFormHeader>
 
-      <form onSubmit={sendMessage} className={styles.sendMessageForm}>
+      <SendMessageFormDoWhile onSubmit={sendMessage}>
         <label htmlFor="message">Mensagem</label>
         <textarea
           name="message"
@@ -51,7 +53,7 @@ export function SendMessageForm() {
         />
 
         <button type="submit">Enviar mensagem</button>
-      </form>
-    </div>
+      </SendMessageFormDoWhile>
+    </Container>
   );
 }

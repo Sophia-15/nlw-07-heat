@@ -22,6 +22,7 @@
     "no-console": "off",
     "camelcase": "off",
     "no-extra-boolean-cast": "off",
-    "jsx-a11y/label-has-associated-control": "off"
+    "jsx-a11y/label-has-associated-control": "off",
+    "react/jsx-no-bind": "off"
   }
 }

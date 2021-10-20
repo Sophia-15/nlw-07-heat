@@ -1,10 +1,15 @@
-import React, { useEffect, useState } from 'react';
-
+import React, { useContext, useEffect, useState } from 'react';
 import { io } from 'socket.io-client';
-import styles from './styles.module.scss';
+import Switch from 'react-switch';
 
-import logo from '../../assets/logo.svg';
+import { ThemeContext } from 'styled-components';
+import { Container, MessageListContainer } from './styles';
+
 import { api } from '../../services/api';
+
+interface MessageListSwitchProps {
+  toggleTheme: () => void
+}
 
 interface UserProps {
   avatar_url: string
@@ -26,8 +31,9 @@ socket.on('new_message', (newMessage: MessageProps) => {
   messageQueue.push(newMessage);
 });
 
-export function MessageList() {
+export function MessageList({ toggleTheme }: MessageListSwitchProps) {
   const [lastThreeMessages, setLastThreeMessages] = useState<MessageProps[]>([]);
+  const { title, logo } = useContext(ThemeContext);
 
   useEffect(() => {
     setInterval(() => {
@@ -53,18 +59,31 @@ export function MessageList() {
   }, []);
 
   return (
-    <div className={styles.messageListWrapper}>
-      <img src={logo} alt="Logo DoWhile 2021" />
+    <Container>
+      <header>
+        <img src={logo} alt="Logo DoWhile 2021" />
+        <Switch
+          onChange={toggleTheme}
+          checked={title === 'light'}
+          checkedIcon={false}
+          uncheckedIcon={false}
+          height={10}
+          width={40}
+          handleDiameter={20}
+          onColor="#ff008e"
+          offColor="#ffcd1e"
+        />
+      </header>
 
-      <ul className={styles.messageList}>
+      <MessageListContainer>
         {lastThreeMessages.length > 0 && lastThreeMessages.map((message) => (
-          <li className={styles.message} key={message.id}>
-            <p className={styles.messageContent}>
+          <li className="message" key={message.id}>
+            <p className="messageContent">
               {message.text}
             </p>
 
-            <div className={styles.messageUser}>
-              <div className={styles.userImage}>
+            <div className="messageUser">
+              <div className="userImage">
                 <img src={message.user.avatar_url} alt={message.user.name} />
               </div>
               <span>{message.user.name}</span>
@@ -72,7 +91,7 @@ export function MessageList() {
           </li>
         ))}
 
-      </ul>
-    </div>
+      </MessageListContainer>
+    </Container>
   );
 }
