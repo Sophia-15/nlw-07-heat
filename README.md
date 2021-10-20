@@ -25,7 +25,7 @@ Esse projeto foi feito com as seguintes tecnologias.
 
 - ReactJS
 - TypeScript
-- CSS Modules
+- Styled Components
 - NodeJS
 - Prisma
 - Socket.io
