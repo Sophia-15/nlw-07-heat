@@ -1,5 +1,9 @@
 import React, { FormEvent, useContext, useState } from 'react';
 import { VscGithubInverted, VscSignOut } from 'react-icons/vsc';
+
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 import { AuthContext } from '../../contexts/AuthContext';
 import { api } from '../../services/api';
 import {
@@ -14,12 +18,12 @@ export function SendMessageForm() {
     e.preventDefault();
 
     if (!message.trim()) {
-      // adicionar toast
+      toast.error('Este campo não pode ficar em branco');
       return;
     }
 
     await api.post('message', { message });
-
+    toast.success('Mensagem enviada com sucesso!');
     setMessage('');
   }
 
@@ -54,6 +58,7 @@ export function SendMessageForm() {
 
         <button type="submit">Enviar mensagem</button>
       </SendMessageFormDoWhile>
+      <ToastContainer />
     </Container>
   );
 }

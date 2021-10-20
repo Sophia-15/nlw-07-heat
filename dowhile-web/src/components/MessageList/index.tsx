@@ -72,6 +72,7 @@ export function MessageList({ toggleTheme }: MessageListSwitchProps) {
           handleDiameter={20}
           onColor="#ff008e"
           offColor="#ffcd1e"
+          draggable
         />
       </header>
 

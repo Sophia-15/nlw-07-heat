@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import background from './assets/background.svg';
 
 export const Container = styled.main`
   max-width: 75rem;
@@ -15,7 +16,7 @@ export const Container = styled.main`
     content: "";
     height: 100vh;
     width: 26.25rem;
-    background: url("./assets/background.svg") no-repeat cover;
+    background: url(${background}) no-repeat cover;
     position: absolute;
     right: -12.5rem;
     top: 0;
