@@ -12,15 +12,18 @@ import { usePersistedState } from './utils/usePersistedState';
 
 import dark from './styles/themes/dark';
 import light from './styles/themes/light';
+import { Loading } from './components/Loading';
 
 export function App() {
-  const { user } = useContext(AuthContext);
+  const { user, loading } = useContext(AuthContext);
 
   const [theme, setTheme] = usePersistedState<DefaultTheme>('@dowhile2021:theme', dark);
 
   function toggleTheme() {
     setTheme(theme.title === 'dark' ? light : dark);
   }
+
+  if (loading) return <Loading />;
 
   return (
     <ThemeProvider theme={theme}>

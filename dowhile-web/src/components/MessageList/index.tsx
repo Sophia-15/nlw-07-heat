@@ -3,6 +3,7 @@ import { io } from 'socket.io-client';
 import Switch from 'react-switch';
 
 import { ThemeContext } from 'styled-components';
+import { motion } from 'framer-motion';
 import { Container, MessageListContainer } from './styles';
 
 import { api } from '../../services/api';
@@ -58,6 +59,18 @@ export function MessageList({ toggleTheme }: MessageListSwitchProps) {
     getLastThreeMessages();
   }, []);
 
+  const variants = {
+    visible: (i: number) => ({
+      opacity: 1,
+      x: 0,
+      transition: {
+        duration: 0.5,
+        delay: i / 4,
+      },
+    }),
+    hidden: { opacity: 0, x: -20 },
+  };
+
   return (
     <Container>
       <header>
@@ -72,13 +85,20 @@ export function MessageList({ toggleTheme }: MessageListSwitchProps) {
           handleDiameter={20}
           onColor="#ff008e"
           offColor="#ffcd1e"
-          draggable
+
         />
       </header>
 
       <MessageListContainer>
-        {lastThreeMessages.length > 0 && lastThreeMessages.map((message) => (
-          <li className="message" key={message.id}>
+        {lastThreeMessages.length > 0 && lastThreeMessages.map((message, i) => (
+          <motion.li
+            initial="hidden"
+            custom={i}
+            animate="visible"
+            variants={variants}
+            className="message"
+            key={message.id}
+          >
             <p className="messageContent">
               {message.text}
             </p>
@@ -89,7 +109,7 @@ export function MessageList({ toggleTheme }: MessageListSwitchProps) {
               </div>
               <span>{message.user.name}</span>
             </div>
-          </li>
+          </motion.li>
         ))}
 
       </MessageListContainer>

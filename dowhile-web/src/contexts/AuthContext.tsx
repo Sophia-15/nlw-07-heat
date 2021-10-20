@@ -80,7 +80,10 @@ export function AuthProvider({ children }: AuthProviderProps) {
   }, []);
 
   return (
-    <AuthContext.Provider value={{ signInUrl, user: githubUser, signOut }}>
+    <AuthContext.Provider value={{
+      signInUrl, user: githubUser, signOut,
+    }}
+    >
       {children}
     </AuthContext.Provider>
   );
