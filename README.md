@@ -29,6 +29,9 @@ Esse projeto foi feito com as seguintes tecnologias.
 - NodeJS
 - Prisma
 - Socket.io
+- React Native
+- Framer Motion
+- Moti
 
 
 
