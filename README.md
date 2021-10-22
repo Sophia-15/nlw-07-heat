@@ -32,6 +32,7 @@ Esse projeto foi feito com as seguintes tecnologias.
 - React Native
 - Framer Motion
 - Moti
+- Elixir
 
 
 
