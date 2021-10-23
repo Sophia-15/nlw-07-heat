@@ -9,7 +9,7 @@ export default {
     black1: '#09090a',
     black3: '#fff',
     black4: '#fff',
-    loginBackground: '#17171a',
+    loginBackground: '#E1E1E6',
     formBackground: '#E1E1E6',
 
     yellow: '#ffcd1e',

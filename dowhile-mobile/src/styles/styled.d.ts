@@ -2,11 +2,8 @@ import 'styled-components';
 
 declare module 'styled-components' {
   export interface DefaultTheme {
-    title: string
-
     colors: {
       WHITE: string
-      WHITE_2: string
       GREEN: string
       PINK: string
       ORANGE: string

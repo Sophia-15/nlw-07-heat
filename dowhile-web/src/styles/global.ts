@@ -15,7 +15,7 @@ export const GlobalStyle = createGlobalStyle`
 
   @media (max-width: 1255px) {
     body {
-      padding: 0 5%;
+      margin: 0 5%;
     }
   }
 
@@ -30,6 +30,4 @@ export const GlobalStyle = createGlobalStyle`
       font-size: 88.5%;
     }
   }
-
-  
 `;

@@ -27,8 +27,24 @@ export function SendMessageForm() {
     setMessage('');
   }
 
+  const variants = {
+    visible: () => ({
+      opacity: 1,
+      x: 0,
+      transition: {
+        duration: 1,
+        delay: 0.4,
+      },
+    }),
+    hidden: { opacity: 0, x: 100 },
+  };
+
   return (
-    <Container>
+    <Container
+      initial="hidden"
+      animate="visible"
+      variants={variants}
+    >
       <SignOutButton type="button" onClick={signOut}>
         <VscSignOut />
       </SignOutButton>

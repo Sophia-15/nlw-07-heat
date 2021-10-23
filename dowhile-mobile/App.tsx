@@ -5,7 +5,7 @@ import AppLoading from 'expo-app-loading';
 import { StatusBar } from 'expo-status-bar';
 
 import { Home } from './src/screens/Home';
-import dark from './src/styles/themes/dark';
+import theme from './src/styles/theme';
 import { AuthProvider } from './src/contexts/AuthContext';
 
 export default function App() {
@@ -19,7 +19,7 @@ export default function App() {
   }
 
   return (
-    <ThemeProvider theme={dark}>
+    <ThemeProvider theme={theme}>
       <AuthProvider>
         <StatusBar style="light" translucent />
         <Home />

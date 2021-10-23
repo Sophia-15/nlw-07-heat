@@ -11,18 +11,22 @@ export const Container = styled.main`
   column-gap: 7.5rem;
   position: relative;
 
-
-  .contentSigned::before {
+  &.contentSigned::before {
     content: "";
     height: 100vh;
-    width: 26.25rem;
-    background: url(${background}) no-repeat cover;
+    width: 35%;
+    background: url(${background}) no-repeat;
+    background-size: cover;
     position: absolute;
-    right: -12.5rem;
+    right: -16%;
     top: 0;
   }
 
   @media (max-width: 1122px) {
     grid-template-columns: 1fr ;
+
+    &.contentSigned::before {
+      display: none;
+    }
   }
 `;

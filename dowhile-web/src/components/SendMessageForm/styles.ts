@@ -1,6 +1,7 @@
 import styled from 'styled-components';
+import { motion } from 'framer-motion';
 
-export const Container = styled.div`
+export const Container = styled(motion.div)`
   background: ${({ theme }) => theme.colors.formBackground};
   padding: 1.5rem;
   align-self: center;

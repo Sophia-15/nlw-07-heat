@@ -1,9 +1,6 @@
 export default {
-  title: 'dark',
-
   colors: {
     WHITE: '#FFFFFF',
-    WHITE_2: '#fff',
     GREEN: '#1B873F',
     PINK: '#FF008E',
     ORANGE: '#FF7A29',

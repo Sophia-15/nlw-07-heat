@@ -8,7 +8,7 @@ import { SendMessageForm } from './components/SendMessageForm';
 import { AuthContext } from './contexts/AuthContext';
 
 import { GlobalStyle } from './styles/global';
-import { usePersistedState } from './utils/usePersistedState';
+import { usePersistedState } from './hooks/usePersistedState';
 
 import dark from './styles/themes/dark';
 import light from './styles/themes/light';
@@ -24,9 +24,9 @@ export function App() {
 
   return (
     <ThemeProvider theme={theme}>
-      <Container className={!!user ? 'contentSigned' : ''}>
+      <Container className={user ? 'contentSigned' : ''}>
         <MessageList toggleTheme={toggleTheme} />
-        { !!user ? <SendMessageForm /> : <LoginBox /> }
+        { user ? <SendMessageForm /> : <LoginBox /> }
         <GlobalStyle />
       </Container>
     </ThemeProvider>

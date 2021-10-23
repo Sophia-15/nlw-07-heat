@@ -31,6 +31,14 @@ export const MessageListContainer = styled.ul`
   justify-content: center;
   flex: 1;
   gap: 2.5rem;
+  
+  h1 {
+    text-align: center;
+  }
+
+  .notFoundImage {
+    align-self: center;
+  }
 
   .message {
     max-width: 27.5rem;
@@ -72,6 +80,10 @@ export const MessageListContainer = styled.ul`
 
   @media (max-width: 1122px) {
     margin-top: 4rem;
+
+  .notFoundImage {
+    width: 20rem;
+  }
 
     .message {
       &:nth-child(2) {

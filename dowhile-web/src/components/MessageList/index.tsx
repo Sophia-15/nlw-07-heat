@@ -8,6 +8,8 @@ import { Container, MessageListContainer } from './styles';
 
 import { api } from '../../services/api';
 
+import notfound from '../../assets/notfound.svg';
+
 interface MessageListSwitchProps {
   toggleTheme: () => void
 }
@@ -34,7 +36,7 @@ socket.on('new_message', (newMessage: MessageProps) => {
 
 export function MessageList({ toggleTheme }: MessageListSwitchProps) {
   const [lastThreeMessages, setLastThreeMessages] = useState<MessageProps[]>([]);
-  const { title, logo } = useContext(ThemeContext);
+  const { title, logo, colors } = useContext(ThemeContext);
 
   useEffect(() => {
     setInterval(() => {
@@ -64,11 +66,11 @@ export function MessageList({ toggleTheme }: MessageListSwitchProps) {
       opacity: 1,
       x: 0,
       transition: {
-        duration: 0.5,
+        duration: 1,
         delay: i / 4,
       },
     }),
-    hidden: { opacity: 0, x: -20 },
+    hidden: { opacity: 0, x: -50 },
   };
 
   return (
@@ -83,14 +85,20 @@ export function MessageList({ toggleTheme }: MessageListSwitchProps) {
           height={10}
           width={40}
           handleDiameter={20}
-          onColor="#ff008e"
-          offColor="#ffcd1e"
-
+          onColor={colors.pink}
+          offColor={colors.yellow}
+          offHandleColor={colors.yellow}
+          onHandleColor={colors.pink}
         />
       </header>
 
       <MessageListContainer>
-        {lastThreeMessages.length > 0 && lastThreeMessages.map((message, i) => (
+        {lastThreeMessages.length <= 0 ? (
+          <>
+            <h1>Sem mensagens para exibir</h1>
+            <img src={notfound} alt="Sem mensagens para exibir" className="notFoundImage" />
+          </>
+        ) : lastThreeMessages.map((message, i) => (
           <motion.li
             initial="hidden"
             custom={i}

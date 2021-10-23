@@ -23,6 +23,8 @@
     "camelcase": "off",
     "no-extra-boolean-cast": "off",
     "jsx-a11y/label-has-associated-control": "off",
-    "react/jsx-no-bind": "off"
+    "react/jsx-no-bind": "off",
+    "no-restricted-globals": "off",
+    "no-unused-vars": "off"
   }
 }
