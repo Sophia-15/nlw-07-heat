@@ -9,7 +9,7 @@ class ProfileUserController {
 
     const user = await service.execute(user_id);
 
-    return response.json({ user });
+    return response.json(user);
   }
 }
 

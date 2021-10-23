@@ -25,11 +25,21 @@
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
     <script>
-      navigator.serviceWorker.getRegistrations().then(function (registrations) {
-        for (let registration of registrations) {
-          registration.unregister();
-        }
-      });
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker
+            .register('/sw.js')
+            .then((registration) => {
+              console.log(
+                'ServiceWorker registration successful with scope: ',
+                registration.scope,
+              );
+            })
+            .catch((error) => {
+              console.log('ServiceWorker registration failed: ', error);
+            });
+        });
+      }
     </script>
   </body>
 </html>

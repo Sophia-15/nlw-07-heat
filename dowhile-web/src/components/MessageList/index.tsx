@@ -55,7 +55,7 @@ export function MessageList({ toggleTheme }: MessageListSwitchProps) {
   useEffect(() => {
     async function getLastThreeMessages() {
       const { data } = await api.get<MessageProps[]>('/messages/last3');
-      setLastThreeMessages(data.result);
+      setLastThreeMessages(data);
     }
 
     getLastThreeMessages();

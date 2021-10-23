@@ -60,7 +60,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
 
         const { data } = await api.get<UserProps>('profile');
 
-        setGithubUser(data.user);
+        setGithubUser(data);
       }
     }
     verifyUserToken();
