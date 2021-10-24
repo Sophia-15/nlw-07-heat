@@ -5,6 +5,7 @@
 <p align="center">
   <a href="#-tecnologias">Tecnologias</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#-projeto">Projeto</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+   <a href="#-milhas">Milhas extras</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#-layout">Layout</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
 </p>
 
@@ -13,6 +14,7 @@
 
 <p  align="center">
   <img src="https://user-images.githubusercontent.com/67246528/138088767-84309a13-0ca9-44d6-8df3-9bfb25731cb5.png"/>
+  <img src="https://user-images.githubusercontent.com/67246528/138581308-5cde3aa4-9808-43fa-9e8f-53e4d7a8520e.png" align="left"/>
   <img src="https://user-images.githubusercontent.com/67246528/138548036-386cbf11-b0e0-4e07-833e-9cd05fa70560.gif"/>
 </p>
 
@@ -40,6 +42,19 @@ Esse projeto foi feito com as seguintes tecnologias.
 ## 💻 Projeto
 
 Aplicação fullstack feita para o evento DoWhile 2021 com comunicação real time, na NLW da Rocketseat.
+
+
+## 🚀 Milhas Extras
+
+- Styled Components para estilização
+- Framer Motion para as animações
+- Responsividade
+- Theme Switcher + persistência no Local Storage
+- Mensagem de erro e sucesso com o react-toastify
+- Se não tiver mensagens no banco de dados, ele dá um aviso visual 
+- Eslint + extensão prettier para padronização do código
+- useAuth hook
+- Favicon
 
 
 ## 🔖 Layout
