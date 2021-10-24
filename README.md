@@ -44,7 +44,7 @@ Esse projeto foi feito com as seguintes tecnologias.
 Aplicação fullstack feita para o evento DoWhile 2021 com comunicação real time, na NLW da Rocketseat.
 
 
-## 🚀 Milhas Extras
+## 🚀 Milhas Extras (Focado no Front)
 
 - Styled Components para estilização
 - Framer Motion para as animações
