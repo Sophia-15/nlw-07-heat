@@ -19,6 +19,12 @@ export const Container = styled.div`
     }
   }
 
+  .roomName {
+    font-size: 1.25rem;
+    margin-top: 4rem;
+    text-align: center;
+  }
+
   @media (max-width: 1122px) {
     margin-bottom: 4rem;
   }
@@ -29,6 +35,7 @@ export const MessageListContainer = styled.ul`
   display: flex;
   flex-direction: column;
   justify-content: center;
+  margin-top: -15rem;
   flex: 1;
   gap: 2.5rem;
   

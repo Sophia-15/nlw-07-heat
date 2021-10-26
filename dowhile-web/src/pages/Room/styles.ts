@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import background from './assets/background.svg';
+import background from '../../assets/background.svg';
 
 export const Container = styled.main`
   max-width: 75rem;
@@ -11,7 +11,7 @@ export const Container = styled.main`
   column-gap: 7.5rem;
   position: relative;
 
-  &.contentSigned::before {
+  &::before {
     content: "";
     height: 100vh;
     width: 35%;
@@ -25,7 +25,7 @@ export const Container = styled.main`
   @media (max-width: 1122px) {
     grid-template-columns: 1fr ;
 
-    &.contentSigned::before {
+    &::before {
       display: none;
     }
   }

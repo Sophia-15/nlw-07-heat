@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { io } from 'socket.io-client';
 import Switch from 'react-switch';
+import { useParams } from 'react-router-dom';
 
 import { ThemeContext } from 'styled-components';
 import { motion } from 'framer-motion';
@@ -23,20 +24,38 @@ interface MessageProps {
   id: string
   text: string
   user: UserProps
+  room_id: string
+}
+
+interface MessageParams {
+  room_id: string
+}
+
+interface RoomProps {
+  name: string
+  id: string
 }
 
 const messageQueue: MessageProps[] = [];
 
 const socket = io('http://localhost:3333');
 
-socket.on('new_message', (newMessage: MessageProps) => {
-  console.log(newMessage);
-  messageQueue.push(newMessage);
-});
-
 export function MessageList({ toggleTheme }: MessageListSwitchProps) {
   const [lastThreeMessages, setLastThreeMessages] = useState<MessageProps[]>([]);
+  const [rooms, setRooms] = useState<RoomProps[]>([]);
+
   const { title, logo, colors } = useContext(ThemeContext);
+  const { room_id } = useParams<MessageParams>();
+
+  useEffect(() => {
+    socket.on('new_message', (newMessage: MessageProps) => {
+      console.log(newMessage);
+      if (newMessage.room_id === room_id) {
+        messageQueue.push(newMessage);
+      }
+      return newMessage;
+    });
+  }, [socket]);
 
   useEffect(() => {
     setInterval(() => {
@@ -54,11 +73,25 @@ export function MessageList({ toggleTheme }: MessageListSwitchProps) {
 
   useEffect(() => {
     async function getLastThreeMessages() {
-      const { data } = await api.get<MessageProps[]>('/messages/last3');
+      const { data } = await api.get<MessageProps[]>(`/messages/last3/${room_id}`);
       setLastThreeMessages(data);
     }
 
     getLastThreeMessages();
+  }, []);
+
+  useEffect(() => {
+    async function getRoomName() {
+      const { data } = await api.get<RoomProps[]>('/rooms');
+
+      const filteredData = data.filter((room) => room.id === room_id);
+
+      console.log(filteredData);
+
+      setRooms(filteredData);
+    }
+
+    getRoomName();
   }, []);
 
   const variants = {
@@ -91,6 +124,16 @@ export function MessageList({ toggleTheme }: MessageListSwitchProps) {
           onHandleColor={colors.pink}
         />
       </header>
+
+      <h1 className="roomName">
+        {rooms.map((room) => (
+          <h1>
+            Bem vindo a sala de
+            {' '}
+            {room.name}
+          </h1>
+        ))}
+      </h1>
 
       <MessageListContainer>
         {lastThreeMessages.length <= 0 ? (

@@ -1,5 +1,6 @@
 import React, { FormEvent, useContext, useState } from 'react';
 import { VscGithubInverted, VscSignOut } from 'react-icons/vsc';
+import { useParams } from 'react-router-dom';
 
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -10,9 +11,14 @@ import {
   Container, SignOutButton, SendMessageFormHeader, SendMessageFormDoWhile,
 } from './styles';
 
+interface MessageParams {
+  room_id: string
+}
+
 export function SendMessageForm() {
   const { user, signOut } = useContext(AuthContext);
   const [message, setMessage] = useState('');
+  const { room_id } = useParams<MessageParams>();
 
   async function sendMessage(e: FormEvent) {
     e.preventDefault();
@@ -22,7 +28,7 @@ export function SendMessageForm() {
       return;
     }
 
-    await api.post('message', { message });
+    await api.post(`message/${room_id}`, { message });
     toast.success('Mensagem enviada com sucesso!');
     setMessage('');
   }

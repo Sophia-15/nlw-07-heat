@@ -3,14 +3,16 @@ import prismaClient from '../prisma';
 import { io } from '../app';
 
 class CreateMessageService {
-  async execute(text: string, user_id: string) {
+  async execute(text: string, user_id: string, room_id: string) {
     const message = await prismaClient.message.create({
       data: {
         text,
         user_id,
+        room_id,
       },
       include: {
         user: true,
+        room: true,
       },
     });
 
@@ -22,6 +24,7 @@ class CreateMessageService {
         name: message.user.name,
         avatar_url: message.user.avatar_url,
       },
+      room_id: message.room_id,
     };
 
     io.emit('new_message', infoWS);
