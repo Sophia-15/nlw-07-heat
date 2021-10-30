@@ -10,10 +10,7 @@ import { Container, MessageListContainer } from './styles';
 import { api } from '../../services/api';
 
 import notfound from '../../assets/notfound.svg';
-
-interface MessageListSwitchProps {
-  toggleTheme: () => void
-}
+import { useTheme } from '../../hooks/useTheme';
 
 interface UserProps {
   avatar_url: string
@@ -40,11 +37,12 @@ const messageQueue: MessageProps[] = [];
 
 const socket = io('http://localhost:3333');
 
-export function MessageList({ toggleTheme }: MessageListSwitchProps) {
+export function MessageList() {
   const [lastThreeMessages, setLastThreeMessages] = useState<MessageProps[]>([]);
   const [rooms, setRooms] = useState<RoomProps[]>([]);
 
   const { title, logo, colors } = useContext(ThemeContext);
+  const { toggleTheme } = useTheme();
   const { room_id } = useParams<MessageParams>();
 
   useEffect(() => {

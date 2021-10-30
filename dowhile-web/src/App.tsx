@@ -10,23 +10,18 @@ import light from './styles/themes/light';
 import { Login } from './pages/Login';
 import { Room } from './pages/Room';
 import { ChooseRoom } from './pages/ChooseRoom';
+import { CustomThemeProvider } from './contexts/ThemeContext';
 
 export function App() {
-  const [theme, setTheme] = usePersistedState<DefaultTheme>('@dowhile2021:theme', dark);
-
-  function toggleTheme() {
-    setTheme(theme.title === 'dark' ? light : dark);
-  }
-
   return (
-    <ThemeProvider theme={theme}>
+    <CustomThemeProvider>
       <Router>
         <Route path="/" exact component={Login} />
         <Route path="/rooms/:room_id" component={Room} />
         <Route path="/choose" component={ChooseRoom} />
       </Router>
       <GlobalStyle />
-    </ThemeProvider>
+    </CustomThemeProvider>
 
   );
 }
