@@ -54,6 +54,7 @@ Aplicação fullstack feita para o evento DoWhile 2021 com comunicação real ti
 - Se não tiver mensagens no banco de dados, ele dá um aviso visual 
 - Eslint + extensão prettier para padronização do código
 - useAuth hook
+- useTheme hook
 - Favicon
 - Funcionalidade de salas para cada stack
 
