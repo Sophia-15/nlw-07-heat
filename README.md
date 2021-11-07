@@ -56,7 +56,6 @@ Aplicação fullstack feita para o evento DoWhile 2021 com comunicação real ti
 - useAuth hook
 - useTheme hook
 - Favicon
-- Funcionalidade de salas para cada stack
 
 
 ## 🔖 Layout
